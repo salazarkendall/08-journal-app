@@ -1,0 +1,106 @@
+*,
+*::after,
+*::before {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	box-sizing: border-box;
+	height: 100vh;
+	width: 100vw;
+}
+
+main {
+	width: 100%;
+}
+
+.u {
+	// Text modifiers
+	&-text {
+		&-center {
+			text-align: center;
+		}
+		&-end {
+			text-align: end;
+		}
+		&-start {
+			text-align: start;
+		}
+	}
+
+	// Margin bottom
+	&-mb {
+		&-2 {
+			margin-bottom: 2rem !important;
+		}
+		&-4 {
+			margin-bottom: 4rem !important;
+		}
+		&-6 {
+			margin-bottom: 6rem !important;
+		}
+		&-8 {
+			margin-bottom: 8rem !important;
+		}
+	}
+
+	// Margin top
+	&-mt {
+		&-2 {
+			margin-top: 2rem !important;
+		}
+		&-4 {
+			margin-top: 4rem !important;
+		}
+		&-6 {
+			margin-top: 6rem !important;
+		}
+		&-8 {
+			margin-top: 8rem !important;
+		}
+	}
+
+	// Horizontal Padding
+	&-ph {
+		&-2 {
+			padding: 0rem 2rem;
+		}
+		&-4 {
+			padding: 0rem 4rem;
+		}
+		&-6 {
+			padding: 0rem 6rem;
+		}
+		&-8 {
+			padding: 0rem 8rem;
+		}
+	}
+
+	// Vertical Padding
+	&-pv {
+		&-2 {
+			padding: 2rem 0rem;
+		}
+		&-4 {
+			padding: 4rem 0rem;
+		}
+		&-6 {
+			padding: 6rem 0rem;
+		}
+		&-8 {
+			padding: 8rem 0rem;
+		}
+	}
+}
+
+.pointer {
+	cursor: pointer;
+}
