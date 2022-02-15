@@ -1,14 +1,17 @@
+* {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
 *,
 *::after,
 *::before {
 	box-sizing: inherit;
 	margin: 0;
 	padding: 0;
-	font-family: Helvetica, Arial, sans-serif;
 }
 
 html {
-	font-size: 62.5%;
+	font-size: 70%;
 	scroll-behavior: smooth;
 }
 
