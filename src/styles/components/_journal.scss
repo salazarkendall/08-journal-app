@@ -15,7 +15,8 @@
 
 		&-navbar {
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-around;
+			align-items: baseline;
 		}
 
 		&-new-entry {
@@ -49,7 +50,7 @@
 		border-radius: 4px;
 		color: $dark-grey;
 		display: flex;
-		margin-bottom: 10px;
+		margin: 10px 10px;
 		overflow: hidden;
 		cursor: pointer;
 
@@ -74,8 +75,15 @@
 			flex-direction: column;
 			justify-content: center;
 			padding: 5px;
+
+			& h4 {
+				font-size: 8px;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+
 			& span {
-				font-size: 1rem;
+				font-size: 20px;
 			}
 		}
 	}

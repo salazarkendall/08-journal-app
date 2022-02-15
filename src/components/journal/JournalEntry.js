@@ -21,8 +21,8 @@ export const JournalEntry = () => {
 			</div>
 
 			<div className="journal__entry-datebox">
-				<span>Monday</span>
-				<h4>28</h4>
+				<h4>Monday</h4>
+				<span>28</span>
 			</div>
 		</div>
 	);
