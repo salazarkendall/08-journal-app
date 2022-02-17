@@ -1,7 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
+import {
+	startGithubLogin,
+	startGoogleLogin,
+	startLoginEmailPassword,
+} from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
@@ -20,6 +24,8 @@ export const LoginScreen = () => {
 	const handleGoogleLogin = () => {
 		dispatch(startGoogleLogin());
 	};
+
+	const handleGithubLogin = () => dispatch(startGithubLogin());
 
 	return (
 		<>
@@ -69,7 +75,7 @@ export const LoginScreen = () => {
 				</div>
 				<div
 					className="auth-btn btn-auth-github"
-					onClick={handleGoogleLogin}
+					onClick={handleGithubLogin}
 				>
 					<div className="auth-icon-wrapper">
 						<img
