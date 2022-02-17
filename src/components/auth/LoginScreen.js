@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login } from '../../actions/auth';
+import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
@@ -14,7 +14,11 @@ export const LoginScreen = () => {
 
 	const handleLogin = (e) => {
 		e.preventDefault();
-		dispatch(login(123, 'Kendall'));
+		dispatch(startLoginEmailPassword(email, password));
+	};
+
+	const handleGoogleLogin = () => {
+		dispatch(startGoogleLogin());
 	};
 
 	return (
@@ -48,16 +52,34 @@ export const LoginScreen = () => {
 			</form>
 			<div className="auth__social-networks">
 				<p>Login with social networks:</p>
-				<div className="google-btn">
-					<div className="google-icon-wrapper">
+				<div
+					className="auth-btn btn-auth-google"
+					onClick={handleGoogleLogin}
+				>
+					<div className="auth-icon-wrapper">
 						<img
-							className="google-icon"
+							className="auth-icon"
 							src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
 							alt="google button"
 						/>
 					</div>
 					<p className="btn-text">
-						<b>Sign in with google</b>
+						<b>Sign in with Google</b>
+					</p>
+				</div>
+				<div
+					className="auth-btn btn-auth-github"
+					onClick={handleGoogleLogin}
+				>
+					<div className="auth-icon-wrapper">
+						<img
+							className="auth-icon"
+							src="https://raw.githubusercontent.com/gilbarbara/logos/9f0858601cc8543b51c8eea0722dbab4a7c7a1f9/logos/github-icon.svg"
+							alt="google button"
+						/>
+					</div>
+					<p className="btn-text">
+						<b>Sign in with GitHub</b>
 					</p>
 				</div>
 			</div>
