@@ -1,9 +1,5 @@
 import { types } from '../types/types';
-import {
-	firebase,
-	googleAuthProvider,
-	githubAuthProvider,
-} from '../firebase/firebase-config';
+import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 
 export const startLoginEmailPassword = (email, password) => {
 	return (dispatch) => {
@@ -14,21 +10,11 @@ export const startLoginEmailPassword = (email, password) => {
 };
 
 export const startGoogleLogin = () => {
+	// Thunk provides dispatch by default
 	return (dispatch) => {
 		firebase
 			.auth()
 			.signInWithPopup(googleAuthProvider)
-			.then(({ user }) => {
-				dispatch(login(user.uid, user.displayName));
-			});
-	};
-};
-
-export const startGithubLogin = () => {
-	return (dispatch) => {
-		firebase
-			.auth()
-			.signInWithPopup(githubAuthProvider)
 			.then(({ user }) => {
 				dispatch(login(user.uid, user.displayName));
 			});
