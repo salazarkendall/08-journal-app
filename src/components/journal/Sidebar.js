@@ -1,15 +1,13 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { startLogout } from '../../actions/auth';
 import { JournalEntries } from './JournalEntries';
+import { startLogout } from '../../actions/auth';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Sidebar = () => {
 	const dispatch = useDispatch();
-	const { name } = useSelector((state) => state.auth);
+	const { name } = useSelector((state) => state.auth); // check authReducer for some guidance: ./src/reducers/authReducer.js
 
-	const handleLogout = () => {
-		dispatch(startLogout());
-	};
+	const handleLogout = () => dispatch(startLogout());
 
 	return (
 		<aside className="journal__sidebar">

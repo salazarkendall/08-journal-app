@@ -9,7 +9,7 @@ const composeEnhancers =
 		window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
 	compose;
 
-// useSelector
+// Use atributes as selectors (useSelector). Check reducers for more guidance: ./src/reducers
 const reducers = combineReducers({
 	auth: authReducer,
 	ui: uiReducer,

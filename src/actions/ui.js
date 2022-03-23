@@ -1,5 +1,7 @@
 import { types } from '../types/types';
 
+// ---> Following functions will be used inside dispatch() <---
+
 export const setError = (err) => ({
 	type: types.uiSetError,
 	payload: err,

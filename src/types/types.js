@@ -1,3 +1,8 @@
+/**
+ * types
+ *
+ * This is a colection of types to avoid misspelling words in reducers
+ */
 export const types = {
 	login: '[Auth] Login',
 	logout: '[Auth] Logout',

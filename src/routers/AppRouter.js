@@ -8,10 +8,19 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 import { useDispatch } from 'react-redux';
 
+/**
+ * Main AppRouter.
+ *
+ * This router has an auth state observer.
+ * It is looking for auth changes to set a different isLoggedIn state.
+ * This will validate public and private routes.
+ *
+ * @returns Router with public and private routes.
+ */
 export const AppRouter = () => {
 	const dispatch = useDispatch();
-	const [checking, setChecking] = useState(true);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [checking, setChecking] = useState(true); // <- Works as an interrupt while loading
+	const [isLoggedIn, setIsLoggedIn] = useState(false); // <- Session will always be logged out by default
 
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged((user) => {
@@ -21,7 +30,7 @@ export const AppRouter = () => {
 			} else {
 				setIsLoggedIn(false);
 			}
-			setChecking(false);
+			setChecking(false); // <- Whatever the result is, this will set checking to false
 		});
 	}, [dispatch, setChecking, setIsLoggedIn]);
 

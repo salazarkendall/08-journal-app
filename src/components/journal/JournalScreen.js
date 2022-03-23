@@ -5,7 +5,7 @@ import { NothingSelected } from './NothingSelected';
 import { Sidebar } from './Sidebar';
 
 export const JournalScreen = () => {
-	const { active } = useSelector((state) => state.notes);
+	const { active } = useSelector((state) => state.notes); // check notesReducer for some guidance: ./src/reducers/notesReducer.js
 
 	return (
 		<div className="journal__main-content">
