@@ -6,6 +6,7 @@ import { JournalScreen } from '../components/journal/JournalScreen';
 import { login } from '../actions/auth';
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
+import { startLoadingNotes } from '../actions/notes';
 import { useDispatch } from 'react-redux';
 
 /**
@@ -23,10 +24,11 @@ export const AppRouter = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false); // <- Session will always be logged out by default
 
 	useEffect(() => {
-		firebase.auth().onAuthStateChanged((user) => {
+		firebase.auth().onAuthStateChanged(async (user) => {
 			if (user?.uid) {
 				dispatch(login(user.uid, user.displayName));
 				setIsLoggedIn(true);
+				dispatch(startLoadingNotes(user.uid));
 			} else {
 				setIsLoggedIn(false);
 			}
