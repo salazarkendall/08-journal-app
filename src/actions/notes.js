@@ -4,6 +4,41 @@ import { fileUpload } from '../helpers/fileUpload';
 import { loadNotes } from '../helpers/loadNotes';
 import { types } from '../types/types';
 
+// Set an active note into the store (noteReducer)
+export const activateNote = (id, note) => ({
+	type: types.noteActive,
+	payload: { id, ...note },
+});
+
+// Set an active note into the store (noteReducer)
+export const addNewNote = (id, note) => ({
+	type: types.noteAddNew,
+	payload: {
+		id,
+		...note,
+	},
+});
+
+export const refreshNote = (id, note) => ({
+	type: types.noteUpdated,
+	payload: {
+		id,
+		note: {
+			id,
+			...note,
+		},
+	},
+});
+
+export const setNotes = (notes) => ({
+	type: types.noteLoad,
+	payload: notes,
+});
+
+export const deleteNote = (id) => ({ type: types.noteDelete, payload: id });
+
+export const purgeNotesLogout = () => ({ type: types.noteLogoutCleaning });
+
 export const startNewNote = () => {
 	return async (dispatch, getState) => {
 		const uid = getState().auth.uid;
@@ -20,33 +55,12 @@ export const startNewNote = () => {
 	};
 };
 
-export const activateNote = (id, note) => ({
-	type: types.noteActive,
-	payload: {
-		id,
-		...note,
-	},
-});
-
-export const addNewNote = (id, note) => ({
-	type: types.noteAddNew,
-	payload: {
-		id,
-		...note,
-	},
-});
-
 export const startLoadingNotes = (uid) => {
 	return async (dispatch) => {
 		const notes = await loadNotes(uid);
 		dispatch(setNotes(notes));
 	};
 };
-
-export const setNotes = (notes) => ({
-	type: types.noteLoad,
-	payload: notes,
-});
 
 export const startSaveNote = (note) => {
 	return async (dispatch, getState) => {
@@ -66,17 +80,6 @@ export const startSaveNote = (note) => {
 		Swal.fire('Saved', note.title, 'success');
 	};
 };
-
-export const refreshNote = (id, note) => ({
-	type: types.noteUpdated,
-	payload: {
-		id,
-		note: {
-			id,
-			...note,
-		},
-	},
-});
 
 export const startUploading = (file) => {
 	return async (dispatch, getState) => {
@@ -110,10 +113,3 @@ export const startDeleting = (id) => {
 		dispatch(deleteNote(id));
 	};
 };
-
-export const deleteNote = (id) => ({
-	type: types.noteDelete,
-	payload: id,
-});
-
-export const purgeNotesLogout = () => ({ type: types.noteLogoutCleaning });

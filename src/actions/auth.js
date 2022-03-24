@@ -4,8 +4,7 @@ import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 import { types } from '../types/types';
 import { purgeNotesLogout } from './notes';
 
-// ---> Don't use these inside dispatch() <---
-
+// Set a user inside the store
 export const login = (uid, displayName) => ({
 	type: types.login,
 	payload: {
@@ -14,14 +13,10 @@ export const login = (uid, displayName) => ({
 	},
 });
 
+// Remove user from the store
 export const logout = () => ({ type: types.logout });
 
-// ---> Use this functions inside dispatch() <---
-
-/**
- * Creates a new user authenticated via Firebase and set it's displayName to the specified name
- * Remember: thunk provides a default dispatch inside the returned callBack
- */
+// Creates a new user authenticated via Firebase and set it's displayName to the specified name
 export const startRegister = (name, email, password) => {
 	return (dispatch) => {
 		firebase
@@ -42,9 +37,7 @@ export const startRegister = (name, email, password) => {
 	};
 };
 
-/**
- * Logs in a user
- */
+// Logs in a user into Firebase using Email and Password
 export const startLoginEmailPassword = (email, password) => {
 	return (dispatch) => {
 		dispatch(startLoading());
@@ -62,9 +55,7 @@ export const startLoginEmailPassword = (email, password) => {
 	};
 };
 
-/**
- * Logs in a user using google sign in method
- */
+// Logs in a user into Firebase using Google Sign In
 export const startGoogleLogin = () => {
 	return (dispatch) => {
 		firebase
@@ -76,9 +67,7 @@ export const startGoogleLogin = () => {
 	};
 };
 
-/**
- * Logs out the user, regardless its login method
- */
+// Logs out the user from Firebase, regardless its login method
 export const startLogout = () => {
 	return async (dispatch) => {
 		await firebase.auth().signOut();
