@@ -47,7 +47,10 @@ export const RegisterScreen = () => {
 	return (
 		<>
 			<h3 className="auth__title">Register</h3>
-			<form className="u-mb-2" onSubmit={handleRegister}>
+			<form
+				className="u-mb-2 animate__animated animate__fadeIn animate__faster"
+				onSubmit={handleRegister}
+			>
 				{errorMessage && (
 					<div className="auth__alert-error">{errorMessage}</div>
 				)}
@@ -94,7 +97,6 @@ export const RegisterScreen = () => {
 					Login
 				</button>
 			</form>
-
 			<Link to="/auth/login" className="link">
 				Already register?
 			</Link>

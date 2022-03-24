@@ -26,6 +26,14 @@
 		}
 	}
 
+	&-danger {
+		background-color: $danger-red;
+		transition: background-color 0.3s ease;
+		&:hover {
+			background-color: darken($danger-red, 10%);
+		}
+	}
+
 	&-block {
 		width: 100%;
 	}

@@ -2,6 +2,7 @@ import Swal from 'sweetalert2';
 import { finishLoading, startLoading } from './ui';
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 import { types } from '../types/types';
+import { purgeNotesLogout } from './notes';
 
 // ---> Don't use these inside dispatch() <---
 
@@ -82,5 +83,6 @@ export const startLogout = () => {
 	return async (dispatch) => {
 		await firebase.auth().signOut();
 		dispatch(logout());
+		dispatch(purgeNotesLogout());
 	};
 };
